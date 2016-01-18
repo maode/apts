@@ -19,7 +19,7 @@ public class AccountAction extends BaseAction<Admin>{
 	
 	
 	/**
-	 * delete key after push test
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
