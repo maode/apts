@@ -5,8 +5,8 @@
 	<artifactId>apts</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>NECDBSourceMgr Maven Webapp</name>
-	<url>http://maven.apache.org</url>
+	<name>apts</name>
+	<url>https://github.com/maode/apts.git</url>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -176,18 +176,22 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.4.1</version>
 		</dependency>
-<dependency>
-  <groupId>org.apache.httpcomponents</groupId>
-  <artifactId>httpmime</artifactId>
-  <version>4.4</version>
-</dependency>
+		<dependency>
+		  <groupId>org.apache.httpcomponents</groupId>
+		  <artifactId>httpmime</artifactId>
+		  <version>4.4</version>
+		</dependency>
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4.1</version>
 		</dependency>
 	</dependencies>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.build.timestamp.format>yyyy-MM-dd_HH_mm</maven.build.timestamp.format>
+	</properties>
 	<build>
-		<finalName>NECDBSourceMgr</finalName>
+		<finalName>${project.artifactId}-${maven.build.timestamp}</finalName>
 	</build>
 </project>
