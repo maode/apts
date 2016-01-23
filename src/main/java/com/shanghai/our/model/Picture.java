@@ -21,7 +21,7 @@ import javax.persistence.Table;
  *	图片实体类
  */
 @Entity
-@Table(name = "t_picture", schema = "ours")
+@Table(name = "t_picture")
 public class Picture implements Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -17,54 +17,30 @@ public class HosueInfoDaoImpl extends HibernateEntityDao<HouseInfo> implements I
 		StringBuffer hql=new StringBuffer(hqlHead);
 		
 		if(houseInfo!=null){
-			if(StringUtils.isNotBlank(houseInfo.getTitle())){
-				hql.append("  and   h.title  like :title");
+			if(houseInfo.getBeginTime()!=null){
+				hql.append("  and  h.beginTime >= :beginTime");
 			}
-			if(StringUtils.isNotBlank(houseInfo.getSurroundings())){
-				hql.append("  and   h.surroundings  like :surroundings");
+			if(houseInfo.getEndTime()!=null){
+				hql.append("  and  h.endTime <= :endTime");
 			}
-			if(StringUtils.isNotBlank(houseInfo.getHouseSpecialMemo())){
-				hql.append("  and   h.houseSpecialMemo  like :houseSpecialMemo");
+			if(StringUtils.isNotBlank(houseInfo.getHouseNum())){
+				hql.append("  and  h.houseNum = :houseNum");
 			}
-			if(StringUtils.isNotBlank(houseInfo.getMemo())){
-				hql.append("  and   h.memo  like :memo");
-			}
-			if(houseInfo.getProvince()!=null&&houseInfo.getProvince().getId()!=0){
-				hql.append("  and  h.provinceid ="+houseInfo.getProvince().getId());
-			}
-			if(houseInfo.getCity()!=null&&houseInfo.getCity().getId()!=0){
-				hql.append("  and  h.cityid ="+houseInfo.getCity().getId());
-			}
-			if(houseInfo.getUserInfo()!=null&&houseInfo.getUserInfo().getId()!=0){
-				hql.append("  and  h.userid ="+houseInfo.getUserInfo().getId());
-			}
-			if(houseInfo.getStatus()!=0){
-				hql.append("  and  h.status ="+houseInfo.getStatus());
-			}
-			if(houseInfo.getHouseTypes()!=null&&houseInfo.getHouseTypes().length>0){
-				hql.append("  and  h.houseType  in :houseTypes");
-			}
+			
 		}
 		if(isCount){
 			hql.append(")TT");
 		}
 		Query query=super.getSession().createSQLQuery(hql.toString());
 		if(houseInfo!=null){
-			if(StringUtils.isNotBlank(houseInfo.getTitle())){
-				query.setParameter("title",houseInfo.getTitle());
+			if(houseInfo.getBeginTime()!=null){
+				query.setParameter("beginTime",houseInfo.getBeginTime());
 			}
-			if(StringUtils.isNotBlank(houseInfo.getSurroundings())){
-				query.setParameter("surroundings",houseInfo.getSurroundings());
+			if(houseInfo.getEndTime()!=null){
+				query.setParameter("endTime",houseInfo.getEndTime());
 			}
-			if(StringUtils.isNotBlank(houseInfo.getHouseSpecialMemo())){
-				query.setParameter("houseSpecialMemo",houseInfo.getHouseSpecialMemo());
-			}
-			if(StringUtils.isNotBlank(houseInfo.getMemo())){
-				query.setParameter("memo",houseInfo.getMemo());
-			}
-		
-			if(houseInfo.getHouseTypes()!=null&&houseInfo.getHouseTypes().length>0){
-				query.setParameterList("houseTypes", houseInfo.getHouseTypes());
+			if(StringUtils.isNotBlank(houseInfo.getHouseNum())){
+				query.setParameter("houseNum",houseInfo.getHouseNum());
 			}
 		}		
 		return query;
@@ -74,8 +50,7 @@ public class HosueInfoDaoImpl extends HibernateEntityDao<HouseInfo> implements I
 	@Override
 	public List<HouseInfo> findAll(Integer firstResult, Integer maxResult,
 			HouseInfo houseInfo) {
-		String hqlHead="select DISTINCT h.* From  t_House h " +
-				" left join t_houseitem hi on h.id=hi.houseid " +
+		String hqlHead="select  h.* From  t_House h " +
 				" where  1=1 ";
 		SQLQuery query=(SQLQuery)this.findAllWhereQuery(hqlHead, houseInfo,false);
 		return query.addEntity(HouseInfo.class).setFirstResult(firstResult).setMaxResults(maxResult).list();
@@ -117,62 +92,26 @@ public class HosueInfoDaoImpl extends HibernateEntityDao<HouseInfo> implements I
 	public List<HouseInfo> searchByKey(Integer firstResult, Integer maxResult,
 			HouseInfo houseInfo) {
 		String hql="From HouseInfo  where  1=1  and delFlag=1";
-		if(houseInfo!=null){
-			if(StringUtils.isNotBlank(houseInfo.getKey())){
-				hql=hql+"  and  ("
-						+ "		title  like :key"
-						+ " or	surroundings  like :key"
-						+ " or	houseSpecialMemo  like :key"
-						+ " or	memo  like :key"
-						+ ")";
-			}
-			if(houseInfo.getStatus()!=0){
-				hql=hql+"  and  status ="+houseInfo.getStatus();
-			}
-			if(houseInfo.getHouseTypes()!=null&&houseInfo.getHouseTypes().length>0){
-				hql=hql+"  and  houseType  in :houseTypes";
-			}
-		}
+		if(houseInfo!=null){}
 			Query query=super.getSession().createQuery(hql);
-			if(houseInfo!=null){
-				if(StringUtils.isNotBlank(houseInfo.getKey())){
-					query.setParameter("key","%"+houseInfo.getKey()+"%");
-				}
-				if(houseInfo.getHouseTypes()!=null&&houseInfo.getHouseTypes().length>0){
-					query.setParameterList("houseTypes", houseInfo.getHouseTypes());
-				}
-			}
+			if(houseInfo!=null){}
 		return query.setFirstResult(firstResult).setMaxResults(maxResult).list();
 	}
 	@Override
 	public Long searchByKeyCount(HouseInfo houseInfo) {
 		String hql="select count(*) From HouseInfo  where  1=1  and delFlag=1";
-		if(houseInfo!=null){
-			if(StringUtils.isNotBlank(houseInfo.getKey())){
-				hql=hql+"  and  ("
-						+ "		title  like :key"
-						+ " or	surroundings  like :key"
-						+ " or	houseSpecialMemo  like :key"
-						+ " or	memo  like :key"
-						+ ")";
-			}
-			if(houseInfo.getStatus()!=0){
-				hql=hql+"  and  status ="+houseInfo.getStatus();
-			}
-			if(houseInfo.getHouseTypes()!=null&&houseInfo.getHouseTypes().length>0){
-				hql=hql+"  and  houseType  in :houseTypes";
-			}
-		}
+		if(houseInfo!=null){}
 			Query query=super.getSession().createQuery(hql);
-			if(houseInfo!=null){
-				if(StringUtils.isNotBlank(houseInfo.getKey())){
-					query.setParameter("key","%"+houseInfo.getKey()+"%");
-				}
-				if(houseInfo.getHouseTypes()!=null&&houseInfo.getHouseTypes().length>0){
-					query.setParameterList("houseTypes", houseInfo.getHouseTypes());
-				}
-			}
+			if(houseInfo!=null){}
 		return (Long)query.uniqueResult();
+	}
+
+	@Override
+	public List<HouseInfo> findAllByOverview(HouseInfo houseInfo) {
+		String hql="from HouseInfo where aptNum=:aptNum order by aptNum,floorNum,houseNum";
+		Query query =super.getSession().createQuery(hql); 
+		query.setParameter("aptNum", houseInfo.getAptNum());
+		return query.list();
 	}
 
 

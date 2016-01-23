@@ -89,37 +89,29 @@
 						<li  id="houseListUL">
 							<a href="#" class="dropdown-toggle">
 								<i class="icon-cogs"></i>
-								<span class="menu-text"> 房源管理</span>
+								<span class="menu-text"> 公寓管理</span>
 								<b class="arrow icon-angle-down"></b>
 							</a>
 
 							<ul class="submenu">
+								<li  id="housesOverviewLI">
+									<a href="<%=request.getContextPath() %>/houseInfo/overview.action">
+										<i class="icon-double-angle-right"></i>
+										房屋概览
+									</a>
+								</li>
 								<li  id="houseMsgLI">
-									<a href="<%=request.getContextPath() %>/houseList.action">
+									<a href="<%=request.getContextPath() %>/houseInfo/houseList.action">
 										<i class="icon-double-angle-right"></i>
-										房源列表
+										房屋列表
 									</a>
 								</li>
-								<li  id="housesappMsgLI">
-									<a href="<%=request.getContextPath() %>/houseAppList.action">
+								<li  id="houseMsgLI">
+									<a href="<%=request.getContextPath() %>/houseInfo/generateHouse.action">
 										<i class="icon-double-angle-right"></i>
-										房源审核
+										房屋添加
 									</a>
 								</li>
-								<li  id="housestaticMsgLI">
-									<a href="#">
-										<i class="icon-double-angle-right"></i>
-										房源统计
-									</a>
-								</li>
-								
-								<li  id="housestaticMsgLI">
-									<a href="#">
-										<i class="icon-double-angle-right"></i>
-										订单列表
-									</a>
-								</li>
-								
 							</ul>
 						</li>
 						

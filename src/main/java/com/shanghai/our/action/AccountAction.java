@@ -38,6 +38,9 @@ public class AccountAction extends BaseAction<Admin>{
 	public String login(){
 		return "login";
 	}
+	/**
+	 * 登录
+	 */
 	@Action(value="loginDo")
 	public void loginDo(){
 		try{

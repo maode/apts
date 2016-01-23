@@ -17,7 +17,7 @@ import javax.persistence.Transient;
  * 活动实体类
  */
 @Entity
-@Table(name = "t_event", schema = "ours")
+@Table(name = "t_event")
 public class Event implements Serializable {
 
 	/**

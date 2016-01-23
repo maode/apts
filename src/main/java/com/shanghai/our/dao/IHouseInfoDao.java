@@ -7,6 +7,11 @@ import com.shanghai.our.model.HouseInfo;
 public interface IHouseInfoDao {
 	
 	/**
+	 * 获取所有的房屋信息-概览图
+	 * @return
+	 */
+	public List<HouseInfo>  findAllByOverview(HouseInfo houseInfo);
+	/**
 	 * 获取所有的房源
 	 * @param firstResult
 	 * @param maxResult
