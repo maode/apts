@@ -7,7 +7,10 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-
+    <!-- 设置session超时时间。-1为永不超时 -->
+	<session-config>
+		<session-timeout>-1</session-timeout>
+	</session-config>
     <!-- Spring监听器 -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

@@ -23,15 +23,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "t_house_his")
-public class HouseHis implements Serializable {
+public class HouseHis extends BaseDomain implements Serializable {
 
 	/** @Fields serialVersionUID*/
 	
 	private static final long serialVersionUID = 1L;
 	
-	/**
-	 * 主键
-	 */
+	/** 主键*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -39,12 +37,20 @@ public class HouseHis implements Serializable {
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name="houseid")
 	private HouseInfo houseInfo;
+	/** @Fields renterName : 租户姓名 */
+	private String renterName;
+	/** @Fields telephone : 电话 */
+	private String telephone;
 	/** @Fields beginTime : 入住时间 */
 	private Date beginTime;
 	/** @Fields endTime : 到期时间 */
 	private Date endTime;
-	/** @Fields price : 月租金 */
-	private Float price;
+	/** @Fields idCard : 身份证号 */
+	private String idCard;
+	/** @Fields memo : 备注 */
+	private String memo;
+	
+	
 	/** @return id */
 	public Integer getId() {
 		return id;
@@ -77,13 +83,37 @@ public class HouseHis implements Serializable {
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
-	/** @return price */
-	public Float getPrice() {
-		return price;
+	/** @return renterName */
+	public String getRenterName() {
+		return renterName;
 	}
-	/** @param price 要设置的 price */
-	public void setPrice(Float price) {
-		this.price = price;
+	/** @param renterName 要设置的 renterName */
+	public void setRenterName(String renterName) {
+		this.renterName = renterName;
+	}
+	/** @return telephone */
+	public String getTelephone() {
+		return telephone;
+	}
+	/** @param telephone 要设置的 telephone */
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+	/** @return idCard */
+	public String getIdCard() {
+		return idCard;
+	}
+	/** @param idCard 要设置的 idCard */
+	public void setIdCard(String idCard) {
+		this.idCard = idCard;
+	}
+	/** @return memo */
+	public String getMemo() {
+		return memo;
+	}
+	/** @param memo 要设置的 memo */
+	public void setMemo(String memo) {
+		this.memo = memo;
 	}
 
 

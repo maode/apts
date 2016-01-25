@@ -18,21 +18,22 @@
 	<!-- 首次生成面板上半部分E -->
 	<!-- 生成主体房屋S -->
 	<s:iterator value="houseList">
-	<s:if test="#fNum==floorNum">
+	<s:if test="#fNum==floorNum"><!-- 判断是否是新的一层 -->
 		<s:if test="status==0">
 			<!-- 未出租 -->
-			<span class="btn btn-success btn-sm tooltip-success" data-rel="tooltip" data-placement="bottom" title="Right Success">
+			<span class="btn btn-success btn-sm tooltip-success" data-rel="tooltip" data-placement="bottom" data-hid="${id }" >
 			<s:property value="houseNum"/>
 			</span>
 		</s:if>
 		<s:else>
 			<!-- 已出租 -->
-			<span class="btn btn-danger btn-sm tooltip-error" data-rel="tooltip" data-placement="bottom" title="2016-01-01~2016-02-01">
+			<span class="btn btn-danger btn-sm tooltip-error" data-rel="tooltip" 
+			data-placement="bottom" data-hid="${id }" data-hisid="${hisId }" title="~${endTime }">
 			<s:property value="houseNum"/>
 			</span>
 		</s:else>
 	</s:if>
-	<s:else>
+	<s:else><!-- 新的一层，更新楼层变量 -->
 		<s:set name="fNum" value="floorNum"/>
 				</p>
 			</div>
@@ -46,13 +47,14 @@
 				<p>
 			<s:if test="status==0">
 				<!-- 未出租 -->
-				<span class="btn btn-success btn-sm tooltip-success" data-rel="tooltip" data-placement="bottom" title="Right Success">
+				<span class="btn btn-success btn-sm tooltip-success" data-rel="tooltip" data-placement="bottom" data-hid="${id }" >
 				<s:property value="houseNum"/>
 				</span>
 			</s:if>
 			<s:else>
 				<!-- 已出租 -->
-				<span class="btn btn-danger btn-sm tooltip-error" data-rel="tooltip" data-placement="bottom" title="Top Danger">
+				<span class="btn btn-danger btn-sm tooltip-error" data-rel="tooltip" 
+				data-placement="bottom" data-hid="${id }" data-hisid="${hisId }" title="~${endTime }">
 				<s:property value="houseNum"/>
 				</span>
 			</s:else>

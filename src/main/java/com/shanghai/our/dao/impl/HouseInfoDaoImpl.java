@@ -5,44 +5,19 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
+import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
 import com.shanghai.our.dao.HibernateEntityDao;
 import com.shanghai.our.dao.IHouseInfoDao;
 import com.shanghai.our.model.HouseInfo;
 @Repository("houseInfoDao")
-public class HosueInfoDaoImpl extends HibernateEntityDao<HouseInfo> implements IHouseInfoDao{
+public class HouseInfoDaoImpl extends HibernateEntityDao<HouseInfo> implements IHouseInfoDao{
 	
 	private Query findAllWhereQuery(String hqlHead,HouseInfo houseInfo,boolean isCount) {
 		StringBuffer hql=new StringBuffer(hqlHead);
 		
-		if(houseInfo!=null){
-			if(houseInfo.getBeginTime()!=null){
-				hql.append("  and  h.beginTime >= :beginTime");
-			}
-			if(houseInfo.getEndTime()!=null){
-				hql.append("  and  h.endTime <= :endTime");
-			}
-			if(StringUtils.isNotBlank(houseInfo.getHouseNum())){
-				hql.append("  and  h.houseNum = :houseNum");
-			}
-			
-		}
-		if(isCount){
-			hql.append(")TT");
-		}
 		Query query=super.getSession().createSQLQuery(hql.toString());
-		if(houseInfo!=null){
-			if(houseInfo.getBeginTime()!=null){
-				query.setParameter("beginTime",houseInfo.getBeginTime());
-			}
-			if(houseInfo.getEndTime()!=null){
-				query.setParameter("endTime",houseInfo.getEndTime());
-			}
-			if(StringUtils.isNotBlank(houseInfo.getHouseNum())){
-				query.setParameter("houseNum",houseInfo.getHouseNum());
-			}
-		}		
 		return query;
 	}
 
@@ -106,12 +81,17 @@ public class HosueInfoDaoImpl extends HibernateEntityDao<HouseInfo> implements I
 		return (Long)query.uniqueResult();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<HouseInfo> findAllByOverview(HouseInfo houseInfo) {
-		String hql="from HouseInfo where aptNum=:aptNum order by aptNum,floorNum,houseNum";
-		Query query =super.getSession().createQuery(hql); 
+		String hql="SELECT h.id,h.aptNum,h.floorNum,h.houseNum,h.status,hh.beginTime,hh.endTime,hh.id AS hisId FROM t_house h "
+				+ " LEFT JOIN V_house_his_last hh"
+				+ " ON h.id=hh.houseid"
+				+ " where h.aptNum=:aptNum"
+				+ " ORDER BY  h.aptNum,h.floorNum,h.houseNum";
+		SQLQuery query =super.getSession().createSQLQuery(hql); 
 		query.setParameter("aptNum", houseInfo.getAptNum());
-		return query.list();
+		return query.setResultTransformer(Transformers.aliasToBean(HouseInfo.class)).list();
 	}
 
 

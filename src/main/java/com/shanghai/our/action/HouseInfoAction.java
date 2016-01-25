@@ -40,6 +40,26 @@ public class HouseInfoAction extends BaseAction<HouseInfo> implements ModelDrive
 		return "overviewContent";
 	}
 	/**
+	 * 腾空房屋
+	 */
+	@Action(value="emptyHouse")
+	public void emptyHouse(){
+		try{
+			 this.mod=this.houseInfoService.getId(this.mod.getId());
+			 this.mod.setStatus("0");
+			 ExecuteResult<String> result=this.houseInfoService.editHouse(mod);
+			 if(result.isSuccess()){
+					super.successResponse("");
+				}else{
+					super.faileResponse(result.getResult());
+				}
+		}catch(Exception e){
+			e.printStackTrace();
+			super.faileResponse(ConstantOur.APP_ERROR_MSG);
+		}
+
+	}
+	/**
 	 * 房屋概览
 	 */
 	@Action(value="overview", results = { @Result(name = "overview", location = "/houseInfo/overview.jsp") })

@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**  
  * @Title: HouseInfo.java
@@ -37,16 +38,10 @@ public class HouseInfo implements Serializable{
 	
 	
 	
-	/** @Fields beginTime : 入住时间 */
-	private Date beginTime;
-	/** @Fields endTime : 到期时间 */
-	private Date endTime;
 	/** 与房屋类型【大套间，中套间，小套间……】的映射 */
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name="house_Type_id")
 	private HouseType houseType;
-	/** @Fields price : 月租金 */
-	private float price;
 	/** @Fields aptNum : 所属楼座 */
 	private String aptNum;
 	/** @Fields floorNum : 所属楼层 */
@@ -56,30 +51,22 @@ public class HouseInfo implements Serializable{
 	/** @Fields status : 房屋状态 0闲置，1已租*/
 	private String status="0";
 	
+	
+	/** @Fields beginTime : 入住时间 */
+	@Transient
+	private Date beginTime;
+	/** @Fields endTime : 到期时间 */
+	@Transient
+	private Date endTime;
+	/** @Fields hisId : 房屋租住历史信息表id */
+	@Transient
+	private Integer hisId;
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public Date getBeginTime() {
-		return beginTime;
-	}
-	public void setBeginTime(Date beginTime) {
-		this.beginTime = beginTime;
-	}
-	public Date getEndTime() {
-		return endTime;
-	}
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
-
-	public float getPrice() {
-		return price;
-	}
-	public void setPrice(float price) {
-		this.price = price;
 	}
 	public String getHouseNum() {
 		return houseNum;
@@ -111,13 +98,37 @@ public class HouseInfo implements Serializable{
 	public void setAptNum(String aptNum) {
 		this.aptNum = aptNum;
 	}
-	/** @return status */
+	/** @return status 0闲置，1已租 */
 	public String getStatus() {
 		return status;
 	}
-	/** @param status 要设置的 status */
+	/** @param status 要设置的 status 0闲置，1已租 */
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	/** @return beginTime */
+	public Date getBeginTime() {
+		return beginTime;
+	}
+	/** @param beginTime 要设置的 beginTime */
+	public void setBeginTime(Date beginTime) {
+		this.beginTime = beginTime;
+	}
+	/** @return endTime */
+	public Date getEndTime() {
+		return endTime;
+	}
+	/** @param endTime 要设置的 endTime */
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+	/** @return hisId */
+	public Integer getHisId() {
+		return hisId;
+	}
+	/** @param hisId 要设置的 hisId */
+	public void setHisId(Integer hisId) {
+		this.hisId = hisId;
 	}
 	
 }
