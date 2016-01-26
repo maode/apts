@@ -27,7 +27,7 @@
 					<!-- head S -->
 					<div class="page-header">
 						<h1>
-							控制台 <small> <i class="icon-double-angle-right"></i> 房源管理列表
+							控制台 <small> <i class="icon-double-angle-right"></i> 房屋管理
 							</small>
 						</h1>
 					</div>

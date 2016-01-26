@@ -105,8 +105,9 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		$("#InfoNewsList").addClass("open").addClass("active");
-		$("#InfoNewsPubMsg").addClass("active");
+		//左侧导航定位
+		$("#houseListUL").addClass("open").addClass("active");
+		$("#houseGenerateLI").addClass("active");
 	</script>
 </body>
 </html>

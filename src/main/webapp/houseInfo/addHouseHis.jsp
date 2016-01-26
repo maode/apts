@@ -120,11 +120,11 @@
 					</div>
 					<div class="form-group">
 						<label class="col-xs-3 control-label no-padding-right"
-							for="form-field-2"> 身份证号 </label>
+							for="form-field-2"> 付款方式 </label>
 
 						<div class="col-xs-9">
-							<s:textfield name="idCard" placeholder="身份证号 *可以不填"
-								cssClass="col-xs-10 col-sm-5 validate[maxSize[18]]"></s:textfield>
+							<s:textfield name="payment" placeholder="如：押一付一 *必填"
+								cssClass="col-xs-10 col-sm-5 validate[required]"></s:textfield>
 						</div>
 					</div>
 					<div class="form-group">

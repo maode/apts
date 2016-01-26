@@ -70,22 +70,22 @@
 								
 							</ul>
 						</li>
-						<li  id="userInfoListUL">
-							<a href="<%=request.getContextPath() %>/userInfoList.action"><!-- 添加  class="dropdown-toggle" 父级菜单的链接跳转失效 -->
-								<i class="icon-cogs"></i>
-								<span class="menu-text">用户管理</span>
-								<b class="arrow icon-angle-down"></b>
-							</a>
+<!-- 						<li  id="userInfoListUL"> -->
+<%-- 							<a href="<%=request.getContextPath() %>/userInfoList.action"><!-- 添加  class="dropdown-toggle" 父级菜单的链接跳转失效 --> --%>
+<!-- 								<i class="icon-cogs"></i> -->
+<%-- 								<span class="menu-text">用户管理</span> --%>
+<!-- 								<b class="arrow icon-angle-down"></b> -->
+<!-- 							</a> -->
 
-							<ul class="submenu">
-								<li  id="userInfoMsgLI">
-									<a href="<%=request.getContextPath() %>/userInfoList.action">
-										<i class="icon-double-angle-right"></i>
-										用户管理
-									</a>
-								</li>
-							</ul>
-						</li>
+<!-- 							<ul class="submenu"> -->
+<!-- 								<li  id="userInfoMsgLI"> -->
+<%-- 									<a href="<%=request.getContextPath() %>/userInfoList.action"> --%>
+<!-- 										<i class="icon-double-angle-right"></i> -->
+<!-- 										用户管理 -->
+<!-- 									</a> -->
+<!-- 								</li> -->
+<!-- 							</ul> -->
+<!-- 						</li> -->
 						<li  id="houseListUL">
 							<a href="#" class="dropdown-toggle">
 								<i class="icon-cogs"></i>
@@ -97,16 +97,16 @@
 								<li  id="housesOverviewLI">
 									<a href="<%=request.getContextPath() %>/houseInfo/overview.action">
 										<i class="icon-double-angle-right"></i>
-										房屋概览
+										房屋管理
 									</a>
 								</li>
-								<li  id="houseMsgLI">
-									<a href="<%=request.getContextPath() %>/houseInfo/houseList.action">
-										<i class="icon-double-angle-right"></i>
-										房屋列表
-									</a>
-								</li>
-								<li  id="houseMsgLI">
+<!-- 								<li  id="houseMsgLI"> -->
+<%-- 									<a href="<%=request.getContextPath() %>/houseInfo/houseList.action"> --%>
+<!-- 										<i class="icon-double-angle-right"></i> -->
+<!-- 										房屋列表 -->
+<!-- 									</a> -->
+<!-- 								</li> -->
+								<li  id="houseGenerateLI">
 									<a href="<%=request.getContextPath() %>/houseInfo/generateHouse.action">
 										<i class="icon-double-angle-right"></i>
 										房屋添加
@@ -115,29 +115,29 @@
 							</ul>
 						</li>
 						
-						<li  id="huodongListUL">
-							<a href="#" class="dropdown-toggle">
-								<i class="icon-cogs"></i>
-								<span class="menu-text"> 活动管理</span>
-								<b class="arrow icon-angle-down"></b>
-							</a>
+<!-- 						<li  id="huodongListUL"> -->
+<!-- 							<a href="#" class="dropdown-toggle"> -->
+<!-- 								<i class="icon-cogs"></i> -->
+<%-- 								<span class="menu-text"> 活动管理</span> --%>
+<!-- 								<b class="arrow icon-angle-down"></b> -->
+<!-- 							</a> -->
 
-							<ul class="submenu">
-								<li  id="huodongMsgLI">
-									<a href="<%=request.getContextPath() %>/eventList.action">
-										<i class="icon-double-angle-right"></i>
-										活动列表
-									</a>
-								</li>
-								<li  id="huodongAppMsgLI">
-									<a href="#">
-										<i class="icon-double-angle-right"></i>
-										活动统计
-									</a>
-								</li>
+<!-- 							<ul class="submenu"> -->
+<!-- 								<li  id="huodongMsgLI"> -->
+<%-- 									<a href="<%=request.getContextPath() %>/eventList.action"> --%>
+<!-- 										<i class="icon-double-angle-right"></i> -->
+<!-- 										活动列表 -->
+<!-- 									</a> -->
+<!-- 								</li> -->
+<!-- 								<li  id="huodongAppMsgLI"> -->
+<!-- 									<a href="#"> -->
+<!-- 										<i class="icon-double-angle-right"></i> -->
+<!-- 										活动统计 -->
+<!-- 									</a> -->
+<!-- 								</li> -->
 								
-							</ul>
-						</li>
+<!-- 							</ul> -->
+<!-- 						</li> -->
 					</ul><!-- /.nav-list -->
 						<div class="sidebar-collapse" id="sidebar-collapse">
 						<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>

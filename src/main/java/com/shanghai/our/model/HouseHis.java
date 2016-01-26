@@ -47,6 +47,8 @@ public class HouseHis extends BaseDomain implements Serializable {
 	private Date endTime;
 	/** @Fields idCard : 身份证号 */
 	private String idCard;
+	/** @Fields payment : 付款方式 */
+	private String payment;
 	/** @Fields memo : 备注 */
 	private String memo;
 	
@@ -114,6 +116,14 @@ public class HouseHis extends BaseDomain implements Serializable {
 	/** @param memo 要设置的 memo */
 	public void setMemo(String memo) {
 		this.memo = memo;
+	}
+	/** @return payment */
+	public String getPayment() {
+		return payment;
+	}
+	/** @param payment 要设置的 payment */
+	public void setPayment(String payment) {
+		this.payment = payment;
 	}
 
 
