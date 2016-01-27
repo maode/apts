@@ -28,7 +28,7 @@
 		<s:else>
 			<!-- 已出租 -->
 			<span class="btn btn-danger btn-sm tooltip-error" data-rel="tooltip" 
-			data-placement="bottom" data-hid="${id }" data-hisid="${hisId }" title="~${endTime }">
+			data-placement="bottom" data-hid="${id }" data-hisid="${hisId }" title="~<s:date name='endTime' format='yyy-MM-dd' />">
 			<s:property value="houseNum"/>
 			</span>
 		</s:else>
@@ -54,7 +54,7 @@
 			<s:else>
 				<!-- 已出租 -->
 				<span class="btn btn-danger btn-sm tooltip-error" data-rel="tooltip" 
-				data-placement="bottom" data-hid="${id }" data-hisid="${hisId }" title="~${endTime }">
+				data-placement="bottom" data-hid="${id }" data-hisid="${hisId }" title="~<s:date name='endTime' format='yyy-MM-dd' />">
 				<s:property value="houseNum"/>
 				</span>
 			</s:else>
